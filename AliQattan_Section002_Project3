@@ -1,0 +1,118 @@
+package Project2;
+import java.util.Scanner;
+import java.util.*;
+
+public class Main{
+	//First Print out 
+	public static void main(String[] args) {
+		System.out.println("  Welcome to Student Management System  ");
+		System.out.println(" This system will allow you to manage student. Lets start with the number of sudents this system will have:  ");
+		System.out.println("**Welcome to Student Management System**");
+		System.out.println("Press '1' to add a student");
+		System.out.println("Press '2' to deactivate a student");
+		System.out.println("Press '3' to display all students");
+		System.out.println("Press '4' to search for a student by ID");
+		System.out.println("Press '0' to exit the system");
+		
+		int size, choice = 1;
+		Scanner scanner = new Scanner(System.in);
+		int defaultID = 5;
+		ArrayList<Student> students;
+		
+		size = scanner.nextInt();
+		students = new ArrayList<Student>(size);
+		while(choice != 0){
+			int tempID;
+			
+			menu();
+			choice = scanner.nextInt();
+	
+			scanner.nextLine();
+			
+			switch (choice) {
+			case 1:
+				String firstName, lastName, studentLevel;
+				System.out.println("Enter first name: ");
+				firstName = scanner.nextLine();
+				System.out.println("Enter last name: ");
+				lastName = scanner.nextLine();
+				System.out.println("Enter level of student: ");
+				studentLevel = scanner.nextLine();
+				Student temp = new Student(defaultID, firstName, lastName, studentLevel);
+				
+				if(students.size() + 1 < size) {
+					students.add(temp);
+					
+					System.out.println(temp.firstName + " " + temp.lastName + " has been added as a " + temp.studentLevel + " with ID " + Student.studentID);
+					System.out.println();
+					defaultID++;
+				}else {
+					System.out.println("  You have the max amount of students implemented	");
+				}
+				break;
+			case 2:
+				System.out.println("  Enter the ID for the student you want to deactivate:  ");
+				tempID = scanner.nextInt(); 
+				scanner.nextLine();
+				
+				for(int i = 0; i < students.size(); i++) {
+					students.get(i);
+					if(Student.studentID == tempID)
+						students.get(i).deactivateStudent();
+				}
+				
+				break;
+			case 3:
+				for(int i = 0; i < students.size(); i++) {
+					students.get(i).displayStudent();
+					System.out.println();
+				}
+				break;
+			case 4:
+				boolean isFound = false;
+				
+				System.out.println("Enter the student ID: ");
+				tempID = scanner.nextInt();
+				
+			
+				for(int i = 0; i < students.size(); i++) {
+					students.get(i);
+					if (tempID == Student.studentID) {
+						isFound = true;
+						students.get(i).displayStudent();
+						break;
+
+					}
+				}
+				if(!isFound)
+					System.out.println("Cannot find student with ID: " + tempID);
+				System.out.println();
+				break;
+			default:
+				 
+				System.out.println("Exit the system");
+				break;
+			case 5: 
+				isFound = false;
+				
+				System.out.println("Enter student ID:   ");
+				tempID = scanner.nextInt();
+				scanner.nextLine();
+				System.out.println("Enter job:   ");
+				String tempJob =  scanner.nextLine();
+				System.out.println("Enter jobType:   ");
+				String tempjobType = scanner.nextLine();
+				
+				for (Student student: students) {
+					if (tempID = student.studentID) {
+						isFound = true;
+						student.assignjob(tempjob, tempjobType)
+					}
+				}
+			}
+			
+		
+		
+	}
+
+}
