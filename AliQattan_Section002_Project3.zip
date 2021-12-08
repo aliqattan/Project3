@@ -1,0 +1,49 @@
+package Project2;
+
+public class Student {
+
+	int studentID;
+	String studentLevel;
+	String lastName;
+	String firstName;
+	String job; 
+	String jobType;
+    boolean isActive;
+    
+	public Student(int SID, String FN, String LN, String SL) {
+		// TODO Auto-generated constructor stub
+		studentID = SID;
+		firstName = FN;
+		lastName = LN;
+		studentLevel = SL;
+		isActive = true;
+		
+	}
+
+	public void displayStudent() throws IOException {
+		// TODO Auto-generated method stub
+		System.out.println(firstName + "   " + lastName);
+		System.out.println("ID:   " + studentID);
+		System.out.println("Level:    " + studentLevel);
+		System.out.println("Status:   " + isActive);
+		
+		File file = new File("StudentsReport.txt");
+		FileWriter fw = new FileWriter("StudentsReport.txt");
+		fw.write(firstName + "    " + lastName + "\n");
+		fw.write("ID:   " + StudentID + "\n");
+		fw.write("Level:   " + studentLevel + "\n");
+		fw.write("Status:   " + isActive + "\n");
+		fw.close();
+	}
+
+	public void deactivateStudent() {
+		isActive = false;
+		System.out.println(firstName + "    " + lastName + "Account Has Been DEACTIVATED");
+		// TODO Auto-generated method stub
+	}
+    public void assignJob(String Job, String JobType) {
+    	this.job = job;
+    	this.JobType;
+    }
+}
+ N 
